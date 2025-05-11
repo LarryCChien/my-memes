@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,9 +12,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: "#000000",
+};
+
 export const metadata: Metadata = {
-  title: "My Memes",
-  description: "Funny memes for everyone, especially for myself",
+  title: "我的迷因收藏",
+  description: "收藏和分享迷因的網站",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "我的迷因收藏",
+  },
+  icons: {
+    icon: [
+      { url: "/icon" },
+    ],
+    apple: [
+      { url: "/icon" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-TW">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

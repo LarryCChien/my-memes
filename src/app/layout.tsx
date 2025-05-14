@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,12 +30,8 @@ export const metadata: Metadata = {
     title: "我的迷因收藏",
   },
   icons: {
-    icon: [
-      { url: "/icon" },
-    ],
-    apple: [
-      { url: "/icon" },
-    ],
+    icon: [{ url: "/icon" }],
+    apple: [{ url: "/icon" }],
   },
 };
 

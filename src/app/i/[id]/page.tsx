@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { Metadata } from "next";
+import Image from "next/image";
 
 type Props = {
-  params: Promise<{ id: string }>
-}
+  params: Promise<{ id: string }>;
+};
 
 type ImageData = {
   id: string;
@@ -11,25 +11,26 @@ type ImageData = {
   description: string;
   tags: string[];
   imageUrl: string;
-}
+};
 
 async function getImageData(id: string): Promise<ImageData> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/images/${id}`, {
-    next: { revalidate: 60 }, // Cache for 1 minute
-  });
-  
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/images/${id}`,
+    {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    }
+  );
+
   if (!res.ok) {
-    throw new Error('Failed to fetch image data');
+    throw new Error("Failed to fetch image data");
   }
-  
+
   return res.json();
 }
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
-  
+
   try {
     const imageData = await getImageData(resolvedParams.id);
 
@@ -97,7 +98,7 @@ export default async function ImagePage({ params }: Props) {
 
           <div className="space-y-4">
             <h1 className="text-2xl font-bold">{imageData.title}</h1>
-            
+
             <div>
               <h2 className="text-lg font-semibold mb-2">標籤</h2>
               <div className="flex flex-wrap gap-2">
@@ -116,4 +117,4 @@ export default async function ImagePage({ params }: Props) {
       </main>
     </div>
   );
-} 
+}

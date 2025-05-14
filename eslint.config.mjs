@@ -43,16 +43,6 @@ const eslintConfig = [
         },
       ],
       "no-unused-vars": "off",
-      "sort-imports": [
-        "error",
-        {
-          ignoreCase: true,
-          ignoreDeclarationSort: true,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
-          allowSeparatedGroups: true,
-        },
-      ],
       "import/first": "error",
       "import/newline-after-import": "error",
       "import/no-duplicates": "error",
